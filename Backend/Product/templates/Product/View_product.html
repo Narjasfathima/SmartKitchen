@@ -1,0 +1,31 @@
+{%  extends 'Home/s_page.html' %}
+{%  block base %}
+<form action="" method="post">
+<h3 >VIEW PRODUCT</h3>
+<br>
+  <table width="800" border="4" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Product Name </td>
+      <td>Type</td>
+      <td>Quantity</td>
+      <td>Price</td>
+      <td>Image</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% if objval %}
+      {% for ob in objval %}
+    <tr>
+      <td>{{ ob.pname }}</td>
+      <td>{{ ob.ptype }}</td>
+      <td>{{ ob.pqty }}</td>
+      <td>{{ ob.price }}</td>
+      <td>&nbsp;<img src="/static/{{ob.pimage  }}" width="40" height="50"></td>
+      <td><a href="{% url 'editproduct' pdt_id=ob.pid %}">Edit</a></td>
+      <td><a href="{% url 'dltpdt' pdt_id=ob.pid %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  {% endif %}
+  </table>
+</form>
+{% endblock %}

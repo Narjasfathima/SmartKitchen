@@ -1,0 +1,29 @@
+{%  extends 'Home/a_page.html' %}
+{%  block base %}
+<form name="form1" method="post" >
+{% csrf_token %}
+<h3 >VIEW KITCHEN-BASKET</h3>
+<br>
+  <table width="800" border="4" align="centre" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Food Item</td>
+      <td>Recipie</td>
+      <td>Ingredients</td>
+      <td></td>
+    </tr>
+        {% if objval %}
+        {% for ob in objval %}
+    <tr>
+        <td>{{ ob.name }}</td>
+        <td>{{ ob.recipie }}</td>
+        <td>{{ ob.ingredients }}</td>
+        <td><a href="{% url 'dltkb' k_id=ob.kid %}">Delete</a></td>
+
+    </tr>
+        {% endfor %}
+        {% endif %}
+  </table>
+    <a href="/kitchen_b/add_kb/"><input type="button" name="Submit" value=" Add Recipie " class="btn btn-block" width="400"></a>
+
+</form>
+{% endblock %}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SHOP SMART-KITCHEN</title>
+<!--css-->
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--css-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Home Plat Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="screen" />
+<!--js-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<!--js-->
+<!--webfonts-->
+<link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,700italic,700,600italic,600,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!--webfonts-->
+<script src="/static/js/responsiveslides.min.js"></script>
+ <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+  <link href="/static/css/owl.carousel.css" rel="stylesheet">
+<script src="/static/js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+			items : 1,
+			lazyLoad : true,
+			autoPlay : true,
+			navigation : false,
+			navigationText :  false,
+			pagination : true,
+		});
+		});
+	</script>
+</head>
+<body>
+	<!--header-->
+	<div class="header" id="home">
+			<div class="header-top">
+				<div class="container">
+					<div class="head-top">
+						<div class="indicate">
+							
+						</div>
+						<div class="deatils">
+							<ul>
+								<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="#" data-toggle="modal" data-target="#myModal">Sign In</a></li>
+								<li><i class="glyphicon glyphicon-lock" aria-hidden="true"></i><a href="/shop/shop_reg/">Sign Up</a></li>
+                                <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/home1/">Home</a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="logo">
+						<h1><a href="index.html">Smart Kitchen<span>For Shop</span></a></h1>
+					</div>
+				</div>
+			</div>
+
+	</div>
+<div>
+    <br>
+</div>
+	<!--header-->
+	<!--banner-->
+		<div class="banner-section">
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider">
+					<li>
+					  <img src="/static/images/1.jpg" alt="">
+
+					</li>
+					<li>
+					  <img src="/static/images/2.jpg" alt="">
+
+					</li><li>
+					  <img src="/static/images/ba3.jpg" alt="">
+
+					</li>
+				</ul>
+		  </div>
+	  </div>
+	</div>
+	<!--banner-->
+	<!--<div class="content">
+
+		<!--Testimonial-->
+	</div>
+		<!--footer-->
+					<div class="footer-section">
+						<div class="container">
+							<div class="footer-grids">
+								<div class="col-md-3 footer-grid">
+									<h4>About </h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+								</div>
+								<div class="col-md-3 footer-grid">
+
+								</div>
+								<div class="col-md-3 footer-grid">
+
+								</div>
+								<div class="col-md-3 footer-grid">
+									<h4>Contacts</h4>
+									<ul>
+										<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>1 234 567 890</li>
+										<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:example@mail.com"> example@mail.com</a></li>
+										<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1398 W El Camino Real</li>
+										<li><i class="glyphicon glyphicon-time" aria-hidden="true"></i>Mon-Sat 8:00 am to 8:00 pm</li>
+									</ul>
+								</div>
+							<div class="clearfix"> </div>
+							</div>
+							
+						</div>
+					</div>
+					<!--footer-->
+					<!--copy-->
+					<div class="copy-section">
+						<div class="container">
+							
+						</div>
+					</div>
+				<!--copy-->
+				<!--signin-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+						</div>
+						<div class="modal-body real-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-right">
+										<form action="" method="post">
+                                            {% csrf_token %}
+										<h3>Sign In</h3>
+										  <table width="400" border="4">
+											<tr>
+											  <td style="font-weight:bold;font-size:17px;">USERNAME</td>
+											  <td><label>
+												<input type="text" name="uname" required pattern="[A-Z a-z 0-9.]{3,25}" style="color: #000000;">
+											  </label></td>
+											</tr>
+											<tr>
+											  <td style="font-weight:bold;font-size:17px;">PASSWORD</td>
+											  <td><label>
+												<input type="password" name="pwd" required pattern="[A-Z a-z 0-9.]{6,10}" style="color: #000000;">
+											  </label></td>
+											</tr>
+											<tr align="center">
+											  <td colspan="2"><label>
+												<div align="center">
+												  <input type="submit" name="Submit" value="  SignIn  ">
+												  </div>
+											  </label></td>
+											</tr>
+											<tr>
+											  <td colspan="2"><a href="/shop/forget_pwd/">Forget Password</a></td>
+											</tr>
+										  </table>
+										</form>
+									</div>
+								</div>
+								<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a href="#">Privacy Policy</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--signin-->
+			<!--Register-->
+
+		<!--Register-->
+</body>
+</html>

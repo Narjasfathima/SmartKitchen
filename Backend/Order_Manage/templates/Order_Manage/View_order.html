@@ -1,0 +1,37 @@
+{%  extends 'Home/s_page.html' %}
+{%  block base %}
+<form action="" method="post">
+<h3 >ORDER DETAILS</h3>
+<br>
+  <table width="1250" border="4" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Book ID </td>
+      <td>Customer Name </td>
+      <td>Address</td>
+      <td>Date</td>
+      <td>Time</td>
+      <td>Product</td>
+	  <td>Quantity</td>
+	  <td>Price</td>
+      <td>&nbsp;</td>
+	  <td>&nbsp;</td>
+    </tr>
+      {% if objval %}
+      {% for ob in objval %}
+    <tr>
+      <td>{{ ob.0 }}</td>
+      <td>{{ ob.13 }}</td>
+      <td>{{ ob.16 }}.  {{ ob.15 }}. {{ ob.18}}(po). pin:{{ ob.17 }}. Mob: {{ob.19 }}</td>
+      <td>{{ ob.4 }}</td>
+      <td>&nbsp;{{ ob.5 }}</td>
+	  <td>{{ ob.23 }}. {{ ob.24 }}.{{ ob.26 }}. {{ ob.27 }}.</td>
+	  <td>{{ ob.9 }}</td>
+	  <td>{{ ob.10 }}</td>
+      <td><a href="{% url 'conforder' book_id=ob.0 %}">Confirm</a></td>
+      <td><a href="{% url 'cancelorder' book_id=ob.0 %}">Cancel</a></td>
+    </tr>
+      {% endfor %}
+  {% endif %}
+  </table>
+</form>
+{% endblock %}

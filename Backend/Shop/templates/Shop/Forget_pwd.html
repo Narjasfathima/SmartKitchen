@@ -1,0 +1,29 @@
+{%  extends 'Home/s_page2.html' %}
+{%  block base %}
+<form  method="post" action="">
+<h3 >FORGET PASSWORD</h3>
+<br>
+    {% csrf_token %}
+  <table width="400" border="4" class="table-condensed">
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Username</td>
+      <td ><label>
+        <input type="text" name="uname" required class="form-control">
+      </label></td>
+    </tr>
+    <tr align="center">
+      <td colspan="2"><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Submit" class="btn btn-block">
+          </div>
+      </label></td>
+    </tr>
+  </table>
+<script>
+    {% if message %}
+        alert('{{ message }}');
+    {% endif %}
+
+</script>
+</form>
+{% endblock %}

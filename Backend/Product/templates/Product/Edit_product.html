@@ -1,0 +1,49 @@
+{%  extends 'Home/s_page.html' %}
+{%  block base %}
+<form action="" method="post" enctype="multipart/form-data" name="form1">
+<h3 >EDIT PRODUCT</h3>
+<br>
+    {% csrf_token %}
+    {% if objval %}
+  <table width="400" border="4" class="table-condensed">
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Product Name </td>
+      <td><label>
+        <input type="text" name="pname" value="{{ objval.pname }}" required pattern="[A-Z a-z 0-9.]{3,25}" class="form-control">
+      </label></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Product Type </td>
+      <td><label>
+        <input type="text" name="ptype" value="{{ objval.ptype }}" required pattern="[A-Z a-z 0-9.]{3,25}" class="form-control">
+      </label></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Image</td>
+      <td><label>
+        <input type="file" name="file">
+      </label></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Quantity</td>
+      <td><label>
+        <input type="text" name="qty" value="{{ objval.pqty }}" required pattern="[A-Z a-z 0-9.]{3,25}" class="form-control">
+      </label></td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Price</td>
+      <td><label>
+        <input type="text" name="price" value="{{ objval.price }}" required pattern="[A-Z a-z 0-9.]{3,25}" class="form-control">
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="  Edit  " class="btn btn-block" >
+          </div>
+      </label></td>
+  </table>
+
+{% endif %}
+</form>
+{% endblock %}

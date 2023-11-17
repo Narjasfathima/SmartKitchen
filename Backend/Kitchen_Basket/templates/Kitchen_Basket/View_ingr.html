@@ -1,0 +1,31 @@
+{%  extends 'Home/a_page.html' %}
+{%  block base %}
+<form name="form1" method="post" >
+{% csrf_token %}
+<h3 >VIEW INGREDIENT</h3>
+<br>
+  <table width="400" border="4" align="centre" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Ingredient</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% if objval %}
+      {% for ob in objval %}
+    <tr>
+      <td>{{ ob.ingred }}</td>
+      <td><a href="{% url 'dltingr' in_id=ob.inid %}">Delete</a></td>
+
+    </tr>
+      {% endfor %}
+  {% endif %}
+{#      <tr>#}
+{#          <td colspan="2">#}
+{#               <input type="submit" name="Submit" value=" Add Ingredient " class="btn btn-block" width="400">#}
+{#          </td>#}
+{#      </tr>#}
+
+  </table>
+    <a href="/kitchen_b/add_ingr/"><input type="button" name="Submit" value=" Add Ingredient " class="btn btn-block" width="400"></a>
+
+</form>
+{% endblock %}

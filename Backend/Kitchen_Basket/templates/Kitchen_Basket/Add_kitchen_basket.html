@@ -1,0 +1,141 @@
+{%  extends 'Home/a_page.html' %}
+{%  block base %}
+
+<h3 >ADD KITCHEN-BASKET</h3>
+<br>
+  <table>
+  <tr>
+      <td style="font-weight:bold;font-size:17px;">Name of Food </td>
+      <td>
+        <input type="text" name="food" id="f" required class="form-control">
+   </td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Recipie </td>
+      <td>
+        <input type="text" name="textfield" required id="re" class="form-control">
+   </td>
+    </tr>
+    <tr>
+      <td style="font-weight:bold;font-size:17px;">Ingredients</td>
+      <td>
+        <select name="inc" id="inc" class="form-control">
+            <option value=""> --SELECT-- </option>
+            {% for x in obj %}
+
+            <option value="{{ x.inid }}"> {{ x.ingred }} </option>
+
+            {% endfor %}
+
+        </select>
+      </td>
+    </tr>
+
+<tr>
+    <td></td>
+        <td>
+           <button name="add" id="add" onclick="instemp()" class="btn btn-danger">Add</button>
+
+       </td>
+</tr>
+	<tr>
+
+  </table>
+    <form method="post" action="">
+    {% csrf_token %}
+    <table>
+        <tr>
+        <td></td>
+      <td colspan="2" style="font-weight:bold;font-size:17px;">
+
+          <input type="submit" class="btn btn-primary" name="Submit2" value="OK">
+             <input type="text" id="incid" size="10" style="height: 25px" readonly name="incid">
+    </td>
+
+    </tr>
+    </table>
+    </form>
+<br>
+<br>
+
+<table id="itm" border="2" style="width: 190px" bgcolor="white" >
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+    </tr>
+</table>
+{#</form>#}
+
+ <script>
+
+    function instemp()
+      {
+          {##}
+          sid=document.getElementById("inc").value;
+          var incinp = document.getElementById("incid").value;
+          document.getElementById("incid").value=incinp+" "+sid
+          {#incinp.val(inctmp+ " "+ sid)#}
+
+          var incset = document.getElementById("inc");
+          var inctext = incset.options[incset.selectedIndex].text;
+          var temptab=document.getElementById("itm");
+
+          var row = temptab.insertRow();
+
+          // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+
+          // Add some text to the new cells:
+          cell1.innerHTML = sid;
+          cell2.innerHTML = inctext;
+          {#temptab.empty();#}
+          {#var markup1 = "<tr><td>Id</td><td>Name</td></tr>";#}
+          {#temptab.append(markup1);#}
+          {#var markup2 = "<tr><td>"+ sid +"</td><td>"+ inctext+"</td></tr>";#}
+          {#temptab.append(markup2);#}
+          {#alert(inctext);#}
+      }
+</script>
+
+    <script src="/static/jquery-1.11.0.min.js"></script>
+    <script>
+    $("#re").change(function () {
+        var va=$(this).val();
+        $.ajax({
+            url:'/kitchen_b/valid2/',
+            data:{
+                'uname':va,
+
+            },
+            dataType:'json',
+            {#success:function (data) {#}
+            {##}
+            {#    if (data.is_ok!="ok")#}
+            {#    {#}
+            {#        alert(data.is_ok);#}
+            {#        $("#uname").val("")#}
+            {#    }#}
+            {##}
+
+        })
+    })
+    </script>
+
+     <script>
+    $("#f").change(function () {
+        var va=$(this).val();
+        $.ajax({
+            url:'/kitchen_b/valid/',
+            data:{
+                'uname':va,
+
+            },
+            dataType:'json',
+
+
+        })
+    })
+    </script>
+
+{% endblock %}

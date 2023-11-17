@@ -1,0 +1,31 @@
+{%  extends 'Home/a_page.html' %}
+{%  block base %}
+<form action="" method="post">
+<h3 >VERIFY SHOP</h3>
+<br>
+  <table width="800" border="4" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Shop ID </td>
+      <td>Shop Name </td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Place</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% if objval %}
+      {% for ob in objval %}
+    <tr>
+      <td>{{ ob.sid }}</td>
+      <td>{{ ob.sname }}</td>
+      <td>{{ ob.semail }}</td>
+      <td>{{ ob.sphno }}</td>
+      <td>{{ ob.splace }}</td>
+      <td><a href="{% url 'confshop' shop_id=ob.sid %}">Confirm</a></td>
+      <td><a href="{% url 'cancelshop' shop_id=ob.sid %}">Cancel</a></td>
+    </tr>
+      {% endfor %}
+  {% endif %}
+  </table>
+</form>
+{% endblock %}

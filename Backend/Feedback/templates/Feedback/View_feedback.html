@@ -1,0 +1,31 @@
+{%  extends 'Home/a_page.html' %}
+{%  block base %}
+<form name="form1" method="post" action="" >
+<h3 >VIEW FEEDBACK</h3>
+<br>
+  <table width="800" border="4" align="centre" class="table-condensed">
+    <tr style="font-weight:bold;font-size:17px;">
+      <td>Feedback</td>
+      <td>Username</td>
+      <td>Tpe of user </td>
+      <td>Date</td>
+      <td>Time</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% if objval %}
+      {% for ob in objval %}
+    <tr>
+      <td>{{ ob.feed }}</td>
+      <td>{{ ob.lid.username }}</td>
+      <td>{{ ob.lid.ltype }}</td>
+      <td>{{ ob.fdate }}</td>
+      <td>{{ ob.ftime }}</td>
+      <td><a href="{% url 'readfeed' feed_id=ob.fid %}">Read</a></td>
+      <td><a href="{% url 'dltfeed' feed_id=ob.fid %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  {% endif %}
+  </table>
+</form>
+{% endblock %}
