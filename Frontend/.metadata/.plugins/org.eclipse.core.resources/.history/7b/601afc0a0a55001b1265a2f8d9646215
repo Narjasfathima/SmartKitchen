@@ -1,0 +1,170 @@
+package com.example.smartkitchen;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class Login extends Activity {
+EditText e1,e2;
+Button b1,b2;
+public static String uid,type;
+public String perm="okk";
+
+//	public static String url="http://192.168.43.159:8000/";
+public static String url="http://192.168.1.3:8000/";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        
+        e1=(EditText)findViewById(R.id.editText1);
+        e2=(EditText)findViewById(R.id.editText2);
+        
+		b1=(Button)findViewById(R.id.button1);
+		b2=(Button)findViewById(R.id.button2);
+		
+		b1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+//				call function
+				
+				String uname = e1.getText().toString();
+				if (uname.length() < 6) {
+					e2.setText("");
+					e2.setError("Please enter minimum 6 characters... ");
+				}
+				
+				String pwd = e2.getText().toString();
+//				String pwdPattern = "[A-Za-z]{1,6}";
+//				if (!pwd.matches(pwdPattern)) {
+//					e2.setText("");
+//					e2.setError("Invalid format...");
+//				}
+				if (pwd.length() < 6) {
+					e2.setText("");
+					e2.setError("Password must be atleast six characters... ");
+				}
+				
+				if(!e1.getText().toString().equals("")&&!e2.getText().toString().equals(""))
+				{
+				
+					new savejson().execute();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Fill", 3).show();
+				}
+			}
+		});
+		
+		b2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+				Intent i= new Intent(getApplicationContext(),Signup.class);
+				startActivity(i);
+			}
+		});
+    }
+
+
+    
+    private class savejson extends AsyncTask<Void, Void, Void>{
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+
+			String url = Login.url+"home/android/";
+		
+			JSONObject jobj= new JSONObject();
+	        try {
+				jobj.put("username", e1.getText().toString());
+				jobj.put("password", e2.getText().toString());
+				String s= JsonHandler.Postjson(url, jobj);
+				JSONArray jdata =JsonHandler.Getjarray(s);
+				if(jdata!=null)
+				{
+					perm="error";
+					for (int i = 0; i < jdata.length(); i++) {
+						perm="ok";
+						JSONObject ob;
+						ob = jdata.getJSONObject(i);
+						uid=ob.getString("lid");
+						 type=ob.getString("ltype");
+						 
+					    	if(type.equals("user"))
+							{
+					    		
+								Intent ii=new Intent(getApplicationContext(),Home.class);
+								startActivity(ii);
+							}
+					    	
+    	
+					} 
+					
+					
+				}
+				else
+				{
+					perm="error";
+				}
+				Log.d("out", perm);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return null; 
+		}
+		
+		@Override
+	      protected void onPostExecute(Void result) {
+	         super.onPostExecute(result);  
+	         if(!perm.equals("error"))
+	         {
+	        	 Log.d("äuth", "ok");
+	        	 Toast.makeText(getApplicationContext(), "Login Successfull", 3).show();
+	        	
+	        	 
+	        	 
+	         }
+	         else
+	         {
+	        	 Log.d("äuth", "error");
+	        	 Toast.makeText(getApplicationContext(), "Username Or Password is incorrect...!", 3).show();
+	         }
+	      }
+	}
+    
+
+
+    
+    
+    
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.login, menu);
+        return true;
+    }
+    
+}

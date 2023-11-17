@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SmartKitchen</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_feedback">Add_feedback</string>
+    <string name="title_activity_video_list">Video_list</string>
+    <string name="title_activity_video_vie">Video_vie</string>
+    <string name="title_activity_video_view">Video_view</string>
+    <string name="title_activity_video_comment_list">Video_comment_list</string>
+    <string name="title_activity_video_comment_add">Video_comment_add</string>
+    <string name="title_activity_video_add">Video_add</string>
+    <string name="title_activity_kitchen_basket">Kitchen_basket</string>
+    <string name="title_activity_kb_recipie">Kb_recipie</string>
+    <string name="title_activity_meal_calender">Meal_calender</string>
+    <string name="title_activity_mc_section">Mc_section</string>
+    <string name="title_activity_mc_list">Mc_list</string>
+    <string name="title_activity_mc_list_add">Mc_list_add</string>
+    <string name="title_activity_shop_list">Shop_list</string>
+    <string name="title_activity_shop_pdt_list">Shop_pdt_list</string>
+    <string name="title_activity_shop_pdt_detail">Shop_pdt_detail</string>
+    <string name="title_activity_shop_pdt_cart">Shop_pdt_cart</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="title_activity_shop_order_details">Shop_order_details</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_order_detail">Order_detail</string>
+    <string name="title_activity_tech_view">Tech_view</string>
+
+</resources>

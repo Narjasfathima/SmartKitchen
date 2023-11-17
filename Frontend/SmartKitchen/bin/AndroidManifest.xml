@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smartkitchen"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/sklogo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.smartkitchen.Login"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Add_feedback"
+            android:label="@string/title_activity_add_feedback" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Video_list"
+            android:label="@string/title_activity_video_list" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Video_view"
+            android:label="@string/title_activity_video_view" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Video_comment_list"
+            android:label="@string/title_activity_video_comment_list" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Video_comment_add"
+            android:label="@string/title_activity_video_comment_add" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Video_add"
+            android:label="@string/title_activity_video_add" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Kitchen_basket"
+            android:label="@string/title_activity_kitchen_basket" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Kb_recipie"
+            android:label="@string/title_activity_kb_recipie" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Meal_calender"
+            android:label="@string/title_activity_meal_calender" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Mc_section"
+            android:label="@string/title_activity_mc_section" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Mc_list"
+            android:label="@string/title_activity_mc_list" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Mc_list_add"
+            android:label="@string/title_activity_mc_list_add" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Shop_list"
+            android:label="@string/title_activity_shop_list" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Shop_pdt_list"
+            android:label="@string/title_activity_shop_pdt_list" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Shop_pdt_detail"
+            android:label="@string/title_activity_shop_pdt_detail" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Shop_pdt_cart"
+            android:label="@string/title_activity_shop_pdt_cart" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Home"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Signup"
+            android:label="@string/title_activity_signup" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Shop_order_details"
+            android:label="@string/title_activity_shop_order_details" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Profile"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Order_detail"
+            android:label="@string/title_activity_order_detail" >
+        </activity>
+        <activity
+            android:name="com.example.smartkitchen.Tech_view"
+            android:label="@string/title_activity_tech_view" >
+        </activity>
+    </application>
+
+</manifest>

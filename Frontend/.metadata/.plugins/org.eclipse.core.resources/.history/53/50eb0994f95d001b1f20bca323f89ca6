@@ -1,0 +1,148 @@
+package com.example.smartkitchen;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+public class Video_list extends Activity {
+	ListView l1;
+	Button b1;
+	ImageButton b1;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_video_list);
+		l1=(ListView)findViewById(R.id.listView1);
+		new getjson().execute();
+		b1=(ImageButton)findViewById(R.id.imageButton1);
+	
+		l1.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent i= new Intent(getApplicationContext(),Video_view.class);
+				
+				HashMap<String, String>hmap=(HashMap<String, String>)arg0.getItemAtPosition(arg2);
+				i.putExtra("cname", hmap.get("cname"));
+				i.putExtra("vdate", hmap.get("cdate"));
+				i.putExtra("vtime", hmap.get("ctime"));
+				i.putExtra("uid", hmap.get("uid"));
+				i.putExtra("cid", hmap.get("cid"));
+				i.putExtra("uname", hmap.get("uname"));
+				i.putExtra("video", hmap.get("video"));
+				startActivity(i);
+			}
+		});
+		
+		b1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i= new Intent(getApplicationContext(),Video_add.class);
+				startActivity(i);
+				
+				
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.video_list, menu);
+		return true;
+	}
+	private class getjson extends AsyncTask<Void, Void, Void>{
+		ArrayList<HashMap<String,String>> al=new ArrayList<HashMap<String,String>>();
+				@Override
+				protected Void doInBackground(Void... params) {
+					// TODO Auto-generated method stub
+					String url = Login.url+"comment/android2/";
+					JSONArray jdata=JsonHandler.GetJson(url);
+					if(jdata!=null)
+					{
+						try {
+						for (int i = 0; i < jdata.length(); i++) {
+		                    JSONObject c;
+							c = jdata.getJSONObject(i);
+							
+							
+							
+							
+		                    String uid = c.getString("uid");	
+		                    String cid = c.getString("cid");
+		                    String cname = c.getString("cname");
+		                    String video = c.getString("video");
+		                    String date = c.getString("cdate");
+		                    String time = c.getString("ctime");
+		                    String uname=c.getString("uname");
+		                   
+
+		                    
+		                    HashMap<String, String> contact =  new HashMap<String, String>();
+		                    contact.put("uid", uid);
+		                    contact.put("cname", cname);
+		                    contact.put("cdate", date);
+		                    contact.put("ctime", time);
+		                    contact.put("cid", cid);
+		                    contact.put("uname", uname);
+		                    contact.put("video", video);
+		                    
+		                    
+           
+		                    
+		                   	     
+		                    	
+		                    	al.add(contact);
+		                  
+		                }
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							Toast.makeText(getApplicationContext(), "No videos Found yet...", 3).show();
+						}
+					}
+					else
+					{
+						Toast.makeText(getApplicationContext(), "No videos Found yet...", 3).show();
+					}
+					return null;
+				}
+				
+				@Override
+			      protected void onPostExecute(Void result) {
+			         super.onPostExecute(result);
+			         
+//			         Toast.makeText(getApplicationContext(), Login.uid, 3).show();
+			         
+			         ListAdapter adapter = new SimpleAdapter(Video_list.this, al,
+			            R.layout.video_list, new String[]{ "cname","uname"}, 
+			               new int[]{R.id.textView3, R.id.textView4,});
+			         l1.setAdapter(adapter);
+			      }
+			}
+
+}
